@@ -7,8 +7,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import io.oneclicklabs.transaction.logging.interceptor.RestTransactionInterceptor;
-import io.oneclicklabs.transaction.logging.writer.LogWriterManager;
+import io.oneclicklabs.logging.interceptor.RestPayloadInterceptor;
+import io.oneclicklabs.logging.writer.LogWriterManager;
 
 /**
  * Created by oneclicklabs.io
@@ -24,7 +24,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new RestTransactionInterceptor(logWriterManager));
+		registry.addInterceptor(new RestPayloadInterceptor(logWriterManager));
 	}
 
 }
